@@ -10,7 +10,6 @@ from pydantic import BaseModel
 import pickle
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
-os.chdir(r"C:\Users\CSU5KOR\OneDrive - Bosch Group\GenAi_Manufacturing\ML_model_data\artifacts\model")
 # Initialize the FastAPI app
 app = FastAPI()
 
@@ -32,10 +31,10 @@ class LoanRequest(BaseModel):
 
 # Load the sklearn model and label encoder from pickle files
 try:
-    with open("model.pkl", "rb") as model_file:
+    with open("model/model.pkl", "rb") as model_file:
         model = pickle.load(model_file)
 
-    with open("encoder.pkl", "rb") as le_file:
+    with open("model/encoder.pkl", "rb") as le_file:
         label_encoder = pickle.load(le_file)
 except Exception as e:
     raise RuntimeError(f"Error loading model or label encoder: {e}")
